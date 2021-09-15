@@ -11,6 +11,14 @@ var tbody = d3.select("tbody");
 button.on("click", runEnter);
 form.on("submit",runEnter);
 
+tableData.forEach(data => {
+    var row = tbody.append("tr");
+    Object.entries(data).forEach(([key,value])=> {
+        var cell=row.append("td");
+        cell.text(value);
+    })
+})
+
 // Complete the event handler function for the form
 function runEnter() {
     // prevent default
@@ -45,7 +53,7 @@ function runEnter() {
     }
     else{
         if(date_boolean){
-            var filteredData = tableData.filter(data => data.datetime === date_value);}
+            var filteredData = tableData.filter(data => data.datetime.includes(date_value));}
 
     //if no matches found, return all the available information as a table
         if(date_boolean==false){
@@ -62,7 +70,7 @@ function runEnter() {
     }
     else{
         if(city_boolean){
-            var filteredData2 = filteredData.filter(data => data.city === city_value);}
+            var filteredData2 = filteredData.filter(data => data.city.includes(city_value));}
 
     //if no matches found, return all the available information as a table
         if(city_boolean==false){
@@ -97,7 +105,7 @@ function runEnter() {
     }
     else{
         if(country_boolean){
-            var filteredData4 = filteredData3.filter(data => data.country === country_value);}
+            var filteredData4 = filteredData3.filter(data => data.country.includes(country_value));}
 
     //if no matches found, return all the available information as a table
         if(country_boolean==false){
@@ -114,7 +122,7 @@ function runEnter() {
     }
     else{
         if(shape_boolean){
-            var filteredData5 = filteredData4.filter(data => data.shape === shape_value);}
+            var filteredData5 = filteredData4.filter(data => data.shape.includes(shape_value));}
 
     //if no matches found, return all the available information as a table
         if(shape_boolean==false){
@@ -132,57 +140,3 @@ function runEnter() {
     })
     console.log(filteredData2)
 }
-
-
-
-
-
-//---------------------------------------------------------------------------------
-// if (Object.values(tableData).includes('1/1/2010')) {
-//     console.log('exists');}
-// else {
-//     console.log('not exist')
-// }
-
-// var tes= Object.entries(tableData)
-
-// console.log(tes)
-
-// tableData.forEach(function(x) {
-//     if (Object.values(x).includes('1/1/2010')) {
-//         console.log('exists');}
-//     else {
-//         console.log('not exist')
-//     }
-//   })
-
-// const searchText = 'Di';
-// const countrySearch = "USA";
-
-// const myArray = [
-//     {
-//         name: "Tom",
-//         country: "UK",
-//         active: true
-//     },
-//     {
-//         name: "Dick",
-//         country: "USA",
-//         active: false
-//     },
-//     {
-//         name: "Dimmon",
-//         country: "FR",
-//         active: false
-//     }
-// ]
-// console.log('OR')
-// console.log(myArray.filter(e => e.active || e.name.includes(searchText)));
-// console.log('AND')
-// console.log(myArray.filter(e => e.active && e.name.includes(searchText)));
-// -------------------------
-// if (myArray.filter(e=> e.name.includes(searchText))){
-//     var_new_array=myArray.filter(e=> e.name.includes(searchText))
-// }
-
-// console.log(var_new_array)
