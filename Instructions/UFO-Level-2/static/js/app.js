@@ -45,98 +45,104 @@ function runEnter() {
 
     // stage 1: filter the data based on datetime
     // declare a boolean variable (i.e if input is found, filter the data)
+    //update filteredData variable with a filtered figure (if filter is applied)
+    var filteredData = tableData;
     var date_boolean=tableData.filter(data=> data.datetime.includes(date_value))
     // if the input in date filter is found in the table, filter it
 
     if (date_value===""){
-        var filteredData = tableData;
+        var filteredData = filteredData;
     }
     else{
         if(date_boolean){
-            var filteredData = tableData.filter(data => data.datetime.includes(date_value));}
+            var filteredData = filteredData.filter(data => data.datetime.includes(date_value));}
 
     //if no matches found, return all the available information as a table
         if(date_boolean==false){
-            var filteredData = tableData;}
+            var filteredData = filteredData;}
     }
 
     //----------------------------------------------------------------------------
     //stage 2: filter the filtered data based on City Name
     // declare a boolean variable (i.e if input is found, filter the data)
+    //update filteredData variable with a filtered figure (if filter is applied)
     var city_boolean=filteredData.filter(data=> data.city.includes(city_value))
 
     if (city_value===""){
-        var filteredData2 = filteredData;
+        var filteredData = filteredData;
     }
     else{
         if(city_boolean){
-            var filteredData2 = filteredData.filter(data => data.city.includes(city_value));}
+            var filteredData = filteredData.filter(data => data.city.includes(city_value));}
 
     //if no matches found, return all the available information as a table
         if(city_boolean==false){
-            var filteredData2 = filteredData;}
+            var filteredData = filteredData;}
     }
 
 
     //----------------------------------------------------------------------------
     //stage 3: filter the filtered data based on State Name
     // declare a boolean variable (i.e if input is found, filter the data)
-    var state_boolean=filteredData2.filter(data=> data.state.includes(state_value))
+    //update filteredData variable with a filtered figure (if filter is applied)
+    var state_boolean=filteredData.filter(data=> data.state.includes(state_value))
 
     if (state_value===""){
-        var filteredData3 = filteredData2;
+        var filteredData = filteredData;
     }
     else{
         if(state_boolean){
-            var filteredData3 = filteredData2.filter(data => data.state === state_value);}
+            var filteredData = filteredData.filter(data => data.state === state_value);}
 
     //if no matches found, return all the available information as a table
         if(state_boolean==false){
-            var filteredData3 = filteredData2;}
+            var filteredData = filteredData;}
     }
 
     //----------------------------------------------------------------------------
     //stage 4: filter the filtered data based on Country Name
     // declare a boolean variable (i.e if input is found, filter the data)
-    var country_boolean=filteredData3.filter(data=> data.country.includes(country_value))
+    //update filteredData variable with a filtered figure (if filter is applied)
+    var country_boolean=filteredData.filter(data=> data.country.includes(country_value))
 
     if (country_value===""){
-        var filteredData4 = filteredData3;
+        var filteredData = filteredData;
     }
     else{
         if(country_boolean){
-            var filteredData4 = filteredData3.filter(data => data.country.includes(country_value));}
+            var filteredData = filteredData.filter(data => data.country.includes(country_value));}
 
     //if no matches found, return all the available information as a table
         if(country_boolean==false){
-            var filteredData4 = filteredData3;}
+            var filteredData = filteredData;}
     }
 
     //----------------------------------------------------------------------------
     //stage 5: filter the filtered data based on shape Name
     // declare a boolean variable (i.e if input is found, filter the data)
-    var shape_boolean=filteredData4.filter(data=> data.shape.includes(shape_value))
+    //update filteredData variable with a filtered figure (if filter is applied)
+    var shape_boolean=filteredData.filter(data=> data.shape.includes(shape_value))
 
     if (shape_value===""){
-        var filteredData5 = filteredData4;
+        var filteredData = filteredData;
     }
     else{
         if(shape_boolean){
-            var filteredData5 = filteredData4.filter(data => data.shape.includes(shape_value));}
+            var filteredData = filteredData.filter(data => data.shape.includes(shape_value));}
 
     //if no matches found, return all the available information as a table
         if(shape_boolean==false){
-            var filteredData5 = filteredData4;}
+            var filteredData = filteredData;}
     }
 
     // append the filtered information into html page
     tbody.html("")
-    filteredData5.forEach(data => {
+    filteredData.forEach(data => {
         var row = tbody.append("tr");
         Object.entries(data).forEach(([key,value])=> {
             var cell=row.append("td");
             cell.text(value);
         })
     })
-    console.log(filteredData2)
+    console.log(filteredData)
 }
